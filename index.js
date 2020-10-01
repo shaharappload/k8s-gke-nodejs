@@ -13,10 +13,13 @@ async function configCluster(projectId, gkeZone, clusterId) {
   return res.data;
 }
 
-async function createK8SClient(projectId, gkeZone, clusterId) {
+async function createK8SClient(projectId, gkeZone, clusterId, k8sApiType) {
   const cluster = await configCluster(projectId, gkeZone, clusterId);
   const authToken = await auth.getAccessToken();
-  const k8sClient = new k8s.CoreV1Api(`https://${cluster.endpoint}`);
+  const clusterEndpoint = `https://${cluster.endpoint}`;
+  const k8sClient = k8sApiType
+    ? new k8sApiType(clusterEndpoint)
+    : new k8s.CoreV1Api(clusterEndpoint);
 
   k8sClient.setDefaultAuthentication({
     applyToRequest: (opts) => {
