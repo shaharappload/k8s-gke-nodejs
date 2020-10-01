@@ -1,0 +1,26 @@
+{
+  "name": "k8s-gke-nodejs",
+  "version": "0.0.1",
+  "description": "GKE Node.js authentication library",
+  "main": "index.js",
+  "scripts": {
+  },
+  "contributors": [
+    {
+      "name": "Appload",
+      "url": "https://github.com/shaharappload"
+    }
+  ],
+  "keywords": [
+    "gke",
+    "k8s",
+    "nodejs",
+    "gcp"
+  ],
+  "author": "Appload",
+  "license": "Apache-2.0 License",
+  "dependencies": {
+    "@kubernetes/client-node": "^0.12.2",
+    "google-auth-library": "^6.1.0"
+  }
+}
